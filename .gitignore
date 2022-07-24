@@ -1,0 +1,6 @@
+/.vs/
+/obj/
+/bin/
+*.sublime-workspace
+*.VC.VC.opendb
+*.VC.db
