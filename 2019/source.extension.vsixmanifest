@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="TaylorsTech.33df060a-872d-40c8-a31b-94602e6b3a06" Version="1.0" Language="en-US" Publisher="Piggybank Studios" />
+        <Identity Id="TaylorsTech.33df060a-872d-40c8-a31b-94602e6b3a06" Version="1.1" Language="en-US" Publisher="Piggybank Studios" />
         <DisplayName>TaylorsTech</DisplayName>
         <Description xml:space="preserve">A plugin with some custom functionality made by Taylor Robbins</Description>
     </Metadata>

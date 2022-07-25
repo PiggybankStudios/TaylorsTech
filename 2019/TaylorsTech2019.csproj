@@ -46,12 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
+    <Compile Include="..\Source\Commands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaylorCommand.cs" />
-    <Compile Include="TaylorsTechPackage.cs" />
-    <Compile Include="CommandFilter.cs" />
-    <Compile Include="TextViewCreationListener.cs" />
+    <Compile Include="..\Source\TaylorCommand.cs" />
+    <Compile Include="..\Source\TaylorsTechPackage.cs" />
+    <Compile Include="..\Source\CommandFilter.cs" />
+    <Compile Include="..\Source\TextViewCreationListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">

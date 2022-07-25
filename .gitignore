@@ -1,6 +1,9 @@
-/.vs/
-/obj/
-/bin/
+/2019/.vs/
+/2019/obj/
+/2019/bin/
+/2022/.vs/
+/2022/obj/
+/2022/bin/
 *.sublime-workspace
 *.VC.VC.opendb
 *.VC.db
