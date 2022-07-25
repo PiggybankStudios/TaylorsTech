@@ -3,7 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
-using Community.VisualStudio.Toolkit;
+//using Community.VisualStudio.Toolkit;
 
 namespace TaylorsTech
 {
@@ -37,8 +37,7 @@ namespace TaylorsTech
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(TaylorsTechPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideBindingPath]
-    public sealed class TaylorsTechPackage : ToolkitPackage
+    public sealed class TaylorsTechPackage : AsyncPackage
     {
         /// <summary>
         /// TaylorsTechPackage GUID string.
@@ -62,17 +61,17 @@ namespace TaylorsTech
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            await this.RegisterCommandsAsync();
+			//await this.RegisterCommandsAsync();
 
-            //Console.WriteLine("Before await...");
+			Console.WriteLine("Before await...");
 
-            //// When initialized asynchronously, the current thread may be a background thread at this point.
-            //// Do any initialization that requires the UI thread after switching to the UI thread.
-            //await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+			// When initialized asynchronously, the current thread may be a background thread at this point.
+			// Do any initialization that requires the UI thread after switching to the UI thread.
+			await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            //Console.WriteLine("After await...");
-            //await TaylorCommand.InitializeAsync(this);
-        }
+			Console.WriteLine("After await...");
+			await TaylorCommand.InitializeAsync(this);
+		}
 
         #endregion
     }

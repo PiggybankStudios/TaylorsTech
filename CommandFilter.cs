@@ -22,12 +22,14 @@ namespace TaylorsTech
 	{
 		protected IOleCommandTarget _nextCommandTarget;
 		protected IWpfTextView _view;
+		protected IVsTextView _viewAdapter;
 		protected DTE2 _dte;
 		protected IEditorOperations _editorOperations;
 
 		public CommandFilter(IVsTextView textViewAdapter, IWpfTextView view, DTE2 dte, IEditorOperationsFactoryService editorOperationsFactory)
 		{
 			textViewAdapter.AddCommandFilter(this, out _nextCommandTarget);
+			_viewAdapter = textViewAdapter;
 			_view = view;
 			_dte = dte;
 			_editorOperations = editorOperationsFactory.GetEditorOperations(view);
@@ -43,14 +45,13 @@ namespace TaylorsTech
 		{
 			ThreadHelper.ThrowIfNotOnUIThread();
 
-			
 			if (pguidCmdGroup == TaylorsTechPackage.CommandSetGuid)
 			{
 				switch (nCmdID)
 				{
 					case TaylorsTechPackage.TestTextviewCommandId: Commands.Test_Command(_view, _editorOperations); break;
 					case TaylorsTechPackage.InsertTodoCommandId: Commands.InsertTodo_Command(_view, _editorOperations); break;
-					case TaylorsTechPackage.OpenSublimeCommandId: Commands.OpenSublime_Command(_view, _editorOperations); break;
+					case TaylorsTechPackage.OpenSublimeCommandId: Commands.OpenSublime_Command(_viewAdapter, _view, _editorOperations); break;
 					default:
 					{
 						Console.WriteLine("Unknown command ID in our package group!");

@@ -1,4 +1,6 @@
-﻿using Community.VisualStudio.Toolkit;
+﻿//using Community.VisualStudio.Toolkit;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Operations;
@@ -47,10 +49,13 @@ namespace TaylorsTech
 			}
 		}
 
-		public static void OpenSublime_Command(IWpfTextView view, IEditorOperations editorOps)
+		public static void OpenSublime_Command(IVsTextView viewAdapter, IWpfTextView view, IEditorOperations editorOps)
         {
-			DocumentView document = view.ToDocumentView();
-			System.Diagnostics.Process.Start("subl.exe", $"\"{document.FilePath}\"");
-        }
+			ThreadHelper.ThrowIfNotOnUIThread();
+			//DocumentView document = view.ToDocumentView();
+			viewAdapter.GetBuffer(out IVsTextLines textLines);
+			(textLines as IPersistFileFormat).GetCurFile(out string filePath, out uint formatIndex);
+			System.Diagnostics.Process.Start("subl.exe", $"\"{filePath}\"");
+		}
 	}
 }
