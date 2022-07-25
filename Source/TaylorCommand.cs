@@ -45,8 +45,8 @@ namespace TaylorsTech
 		private void Execute(object sender, EventArgs e)
 		{
 			ThreadHelper.ThrowIfNotOnUIThread();
-			string title = "You ran the Taylor Command!";
-			string message = $"Inside {this.GetType().Name}.Execute()";
+			string title = "Taylor Command:";
+			string message = $"You are running Taylor's Tech v{TaylorVersion.Major}.{TaylorVersion.Minor:D2}.{TaylorVersion.Build} (for VS{TaylorVersion.VsTarget})";
 
 			VsShellUtilities.ShowMessageBox(this.ownerPackage, message, title, OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 		}

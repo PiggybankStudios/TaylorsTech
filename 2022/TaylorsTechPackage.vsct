@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is a Visual Studio Command Table (.vsct) file -->
+<!-- This is where we define all our commands, menus, packages, images, and other resources and metadata about those resources -->
+
+<!-- This is the file that defines the actual layout and type of the commands. -->
+<!-- It is divided in different sections (e.g. command definition, command placement, ...), with each defining a specific set of properties. -->
+
+<!-- The VSCT compiler (the tool that translates this file into the binary format -->
+<!-- that VisualStudio will consume) has the ability to run a preprocessor on the -->
+<!-- vsct file; this preprocessor is (usually) the C++ preprocessor, so it is -->
+<!-- possible to define includes and macros with the same syntax used in C++ files. -->
+<!-- Using this ability of the compiler below, we include some files defining some -->
+<!-- of the constants that we will use inside the file. -->
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+	<Extern href="stdidcmd.h"/>
+	<!-- This header contains the command ids for the menus provided by the shell. -->
+	<!-- Inside C:\Program Files\Microsoft Visual Studio\2022\Community\VSSDK\VisualStudioIntegration\Common\Inc -->
+	<Extern href="vsshlids.h"/>
+
+	<Commands package="TaylorsTechPackage">
+		<Groups>
+			<Group guid="TaylorCmdSet" id="TaylorEditMenuGroup" priority="0x0600">
+				<!-- Possible Options: IDM_VS_MENU_FILE, IDM_VS_MENU_EDIT, IDM_VS_MENU_VIEW, IDM_VS_MENU_PROJECT, IDM_VS_MENU_TOOLS, IDM_VS_MENU_WINDOW, IDM_VS_MENU_ADDINS, IDM_VS_MENU_HELP, IDM_VS_MENU_DEBUG, IDM_VS_MENU_FORMAT, IDM_VS_MENU_ALLMACROS, IDM_VS_MENU_BUILD, IDM_VS_MENU_CONTEXTMENUS, IDG_VS_MENU_CONTEXTMENUS, IDM_VS_MENU_REFACTORING, IDM_VS_MENU_COMMUNITY, IDM_VS_MENU_EXTENSIONS -->
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT"/>
+			</Group>
+		</Groups>
+
+		<!-- Warning: This contains more than just "Buttons." In a very really way -->
+		<!-- these are the definitions for the commands themselves. The text we give for the -->
+		<!-- button will also be the text used for the command in the Keyboard Bindings menu-->
+		<Buttons>
+			<Button guid="TaylorCmdSet" id="TaylorCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpPicStrikethrough" /> <!-- Optional -->
+				<Strings>
+					<!-- <CommandName>TaylorCommandIsNamed</CommandName> --><!-- TODO: Maybe this does something? Saw it in another extension -->
+					<ButtonText>TaylorCommand!</ButtonText>
+				</Strings>
+				<!-- <CommandFlag>DefaultInvisible</CommandFlag> -->
+				<!-- <CommandFlag>DynamicVisibility</CommandFlag> -->
+				<!-- <CommandFlag>IconIsMoniker</CommandFlag> -->
+			</Button>
+			<Button guid="TaylorCmdSet" id="TestTextviewCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpPicStrikethrough" />
+				<Strings>
+					<ButtonText>TaylorTestTextview</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="TaylorCmdSet" id="InsertTodoCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Strings>
+					<ButtonText>Insert TODO</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="TaylorCmdSet" id="OpenSublimeCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpPic1" />
+				<Strings>
+					<ButtonText>Open Sublime</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+
+		<Bitmaps>
+			<Bitmap guid="TaylorImages" href="Resources\TaylorCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+		</Bitmaps>
+	</Commands>
+	
+	<KeyBindings>
+		<KeyBinding guid="TaylorCmdSet" id="TaylorCommand" mod1="Control" key1="VK_OEM_1" editor="guidVSStd97" />
+		<KeyBinding guid="TaylorCmdSet" id="InsertTodoCommand" mod1="Control Alt" key1="U" editor="guidVSStd97" />
+		<KeyBinding guid="TaylorCmdSet" id="OpenSublimeCommand" mod1="Control Alt" key1="A" editor="guidVSStd97" />
+	</KeyBindings>
+	
+	<Symbols>
+		<GuidSymbol name="TaylorsTechPackage" value="{d255f1e7-a810-43ac-9165-e3b82fd6d249}" />
+
+		<GuidSymbol name="TaylorCmdSet" value="{8c9fce6c-6090-4e26-9e5d-6eaf8dc6ee08}">
+			<IDSymbol name="TaylorEditMenuGroup" value="0x1020" />
+			<IDSymbol name="TaylorCommand" value="0x0100" />
+			<IDSymbol name="TestTextviewCommand" value="0x0101" />
+			<IDSymbol name="InsertTodoCommand" value="0x0102" />
+			<IDSymbol name="OpenSublimeCommand" value="0x0103" />
+		</GuidSymbol>
+		
+		<GuidSymbol name="TaylorImages" value="{294fd48a-2927-49e6-8bf8-6c5ac5642448}" >
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
