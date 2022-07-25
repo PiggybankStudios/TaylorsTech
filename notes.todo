@@ -117,6 +117,7 @@
 	- Edit.GoToType                                                                 Ctrl+1, Ctrl+T
 	- Edit.GoToType                                                                 Ctrl+1, T
 	+ Edit.GoToType                                                                 Shift+Alt+D            (Global)
+	- Edit.MoveControlDown                                                          Down Arrow
 	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
 	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
 	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
@@ -124,6 +125,7 @@
 	- Edit.ScrollLineUp                                                             Ctrl+Up Arrow
 	- Edit.ScrollLineUp                                                             Ctrl+Up Arrow
 	+ Edit.GotoPrevEmptyLine                                                        Ctrl+Up Arrow          (Text Editor)
+	- Edit.MoveControlUp                                                            Up Arrow
 	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
 	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
 	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
@@ -320,23 +322,9 @@
 	
 	//These are all in preparation for Ctrl+Up/Down Moving to Previous/Next empty line
 	- VisualAssist.ScopePrevious                                                      Ctrl+Up Arrow
-	- Edit.MoveControlUp                                                              Ctrl+Up Arrow
-	- Edit.MoveControlUp                                                              Ctrl+Up Arrow
-	- Edit.MoveControlUp                                                              Ctrl+Up Arrow
-	- Edit.ScrollLineUp                                                               Ctrl+Up Arrow
-	- Edit.ScrollLineUp                                                               Ctrl+Up Arrow
-	- Image.ZoomIn                                                                    Ctrl+Up Arrow
-	- Edit.MoveControlDown                                                            Ctrl+Down Arrow
-	- Edit.MoveControlDown                                                            Ctrl+Down Arrow
-	- Edit.MoveControlDown                                                            Ctrl+Down Arrow
-	- Edit.ScrollLineDown                                                             Ctrl+Down Arrow
-	- Edit.ScrollLineDown                                                             Ctrl+Down Arrow
-	- Image.ZoomOut                                                                   Ctrl+Down Arrow
 	- VisualAssist.ScopeNext                                                          Ctrl+Down Arrow
 	- Edit.MoveSelectedLinesDown                                                      Alt+Down Arrow
 	- Edit.MoveSelectedLinesUp                                                        Alt+Up Arrow
-	- Edit.MoveControlDown                                                            Down Arrow
-	- Edit.MoveControlUp                                                              Up Arrow
 	
 	//These were in preparation for Ctrl(+Shift)+U to Uppercase/Lowercase selection
 	- Format.Underline                                                                Ctrl+U
