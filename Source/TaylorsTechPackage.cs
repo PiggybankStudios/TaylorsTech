@@ -52,6 +52,9 @@ namespace TaylorsTech
         public const uint GenerateNumbers0CommandId = 0x0104;
         public const uint GenerateNumbers1CommandId = 0x0105;
         public const uint GenerateNumbersDialogCommandId = 0x0106;
+        public const uint AlignCursorsCommandId = 0x0107;
+        public const uint GotoPrevEmptyLineCommandId = 0x0108;
+        public const uint GotoNextEmptyLineCommandId = 0x0109;
 
         #region Package Members
 

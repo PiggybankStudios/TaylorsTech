@@ -9,7 +9,7 @@ namespace TaylorsTech
     internal class TaylorVersion
     {
         public static int Major = 1;
-        public static int Minor = 3;
+        public static int Minor = 4;
         public static int Build = 0;
         public static int VsTarget = 2022;
     }

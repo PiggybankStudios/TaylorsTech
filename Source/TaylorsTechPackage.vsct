@@ -86,6 +86,27 @@
 					<ButtonText>Generate Numbers...</ButtonText>
 				</Strings>
 			</Button>
+			<Button guid="TaylorCmdSet" id="AlignCursorsCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpNew" />
+				<Strings>
+					<ButtonText>Align Cursors</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="TaylorCmdSet" id="GotoPrevEmptyLineCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpNew" />
+				<Strings>
+					<ButtonText>Goto Prev Empty Line</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="TaylorCmdSet" id="GotoNextEmptyLineCommand" priority="0x0100" type="Button">
+				<Parent guid="TaylorCmdSet" id="TaylorEditMenuGroup" />
+				<Icon guid="TaylorImages" id="bmpNew" />
+				<Strings>
+					<ButtonText>Goto Next Empty Line</ButtonText>
+				</Strings>
+			</Button>
 		</Buttons>
 
 		<Bitmaps>
@@ -99,6 +120,9 @@
 		<KeyBinding guid="TaylorCmdSet" id="OpenSublimeCommand" mod1="Control Alt" key1="A" editor="guidVSStd97" />
 		<KeyBinding guid="TaylorCmdSet" id="GenerateNumbers0Command" mod1="Control Alt" key1="N" editor="guidVSStd97" />
 		<KeyBinding guid="TaylorCmdSet" id="GenerateNumbers1Command" mod1="Control Alt Shift" key1="N" editor="guidVSStd97" /> <!-- TODO: Change this to Dialog variant when we get it working -->
+		<KeyBinding guid="TaylorCmdSet" id="AlignCursorsCommand" mod1="Alt" key1="A" editor="guidVSStd97" />
+		<KeyBinding guid="TaylorCmdSet" id="GotoPrevEmptyLineCommand" mod1="Control" key1="VK_UP" editor="guidVSStd97" />
+		<KeyBinding guid="TaylorCmdSet" id="GotoNextEmptyLineCommand" mod1="Control" key1="VK_DOWN" editor="guidVSStd97" />
 	</KeyBindings>
 	
 	<Symbols>
@@ -113,6 +137,9 @@
 			<IDSymbol name="GenerateNumbers0Command" value="0x0104" />
 			<IDSymbol name="GenerateNumbers1Command" value="0x0105" />
 			<IDSymbol name="GenerateNumbersDialogCommand" value="0x0106" />
+			<IDSymbol name="AlignCursorsCommand" value="0x0107" />
+			<IDSymbol name="GotoPrevEmptyLineCommand" value="0x0108" />
+			<IDSymbol name="GotoNextEmptyLineCommand" value="0x0109" />
 		</GuidSymbol>
 		
 		<GuidSymbol name="TaylorImages" value="{294fd48a-2927-49e6-8bf8-6c5ac5642448}" >

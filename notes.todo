@@ -1,11 +1,33 @@
 
 # TODO List
-	{ } Add AlignCarets_Command
+	(!) Fix GotoPrevEmptyLine_Command and GotoNextEmptyLine_Command when they find empty lines that are in collapsed regions!
+	(!) Fix GotoPrevEmptyLine_Command and GotoNextEmptyLine_Command so they scroll the view to the cursor after moving!
+	{ } Add ToUpper_Command and ToLower_Command
+	{ } Add CollapseAtCurrentIndentation_Command
+	{ } Add ReopenClosedFile_Command
 	{ } Add Google_Command
-	{ } Add JumpToNextEmptyLine_Command and JumpToPrevEmptyLine_Command
-	[ ] Figure out how to implement GenerateNumbersDialog_Command
+	{ } Add ToggleHeader_Command and ToggleLargeHeader_Command
+	{ } Add FoldNext_Command
+	{ } Add OpenNextFold_Command
+	{ } Implement GenerateNumbersDialog_Command
+	{ } Add CollapseBraces_Command
+	{ } Add ConvertToHex_Command, AsciiToHex_Command, Crc16_Command, Md5Hash_Command
+	{ } Add ReplaceWithSpaces_Command
+	{ } Add GotoPrevEmptyLineExtend_Command and GotoNextEmptyLineExtend_Command
+	{ } Add ToggleRegex_Command, ToggleCaseSensitive_Command, and ToggleWholeWord_Command
+	{ } Add ToConvCamelCase_Command, ToConvLowerWords_Command, ToConvLowerUnderscores_Command, ToConvUpperFirst_Command, ToConvUpperFirstWords_Command, ToConvUpperUnderscores_Command, and ToConvSentence_Command
+	{ } Add ToggleDefineEndings_Command
+	{ } Add StartGitBash_Command
+	{ } Add GenerateNumbersHex0_Command, GenerateNumbersHex1_Command, and GenerateNumbersHexDialog_Command
+	[ ] Bind Alt+Up/Down to scrolling the view
+	[ ] Can we bind Ctrl+Alt+W to open the recent projects dropdown?
+	[ ] Can we bind Ctrl+Alt+R to renaming the current file?
+	[ ] Can we bind Ctrl+Alt+Shift+R to delete the current file w/ confirmation dialog?
 	[ ] Move our commands to our own Extensions sub-menu
-	[ ] Organize keybindings that I've developed at work
+	[ ] Can we add a keybinding for Go To Function in file?
+	[ ] Can we highlight TODO: like we do in Sublime?
+	[!] Add an extension that captures debug output and organizes it! Helping us filter it down over time
+	[!] Add an extension that removes namespace prefix on class names in Call Stack panel
 	[ ] 
 
 # Extensions
@@ -35,6 +57,9 @@
 	[ ] NuGet - Microsoft.VisualStudio.SDK (17.0.31902.203 for 2022, 16.0.205 for 2019)
 	[ ] NuGet - Microsoft.VSSDK.BuildTools (17.1.4057 for 2022, 16.6.2057 for 2019)
 	[ ] Reference - System.ComponentModel.Composition v4.0.0.0 (Runtime v4.0.30319)
+
+# Other Notes
+	[ ] Suppress warning VSTHRD010 because it's dumb
 
 # Key-Bindings
 	+ Build.BuildSelection                                                          Ctrl+Alt+B             (Global)
@@ -92,6 +117,20 @@
 	- Edit.GoToType                                                                 Ctrl+1, Ctrl+T
 	- Edit.GoToType                                                                 Ctrl+1, T
 	+ Edit.GoToType                                                                 Shift+Alt+D            (Global)
+	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
+	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
+	- Edit.MoveControlUp                                                            Ctrl+Up Arrow
+	- Image.ZoomIn                                                                  Ctrl+Up Arrow
+	- Edit.ScrollLineUp                                                             Ctrl+Up Arrow
+	- Edit.ScrollLineUp                                                             Ctrl+Up Arrow
+	+ Edit.GotoPrevEmptyLine                                                        Ctrl+Up Arrow          (Text Editor)
+	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
+	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
+	- Edit.MoveControlDown                                                          Ctrl+Down Arrow
+	- Image.ZoomOut                                                                 Ctrl+Down Arrow
+	- Edit.ScrollLineDown                                                           Ctrl+Down Arrow
+	- Edit.ScrollLineDown                                                           Ctrl+Down Arrow
+	+ Edit.GotoNextEmptyLine                                                        Ctrl+Down Arrow        (Text Editor)
 	- Debug.Modules                                                                 Ctrl+Alt+U
 	+ Edit.InsertTODO                                                               Ctrl+Alt+U             (Text Editor)
 	- Design.RefreshPage(2019 only)                                                 Ctrl+R
@@ -140,16 +179,6 @@
 	- Edit.Redo                                                                     Ctrl+Y
 	- Edit.Redo                                                                     Shift+Alt+Bkspce
 	+ Edit.Redo(2019 only)                                                          Ctrl+Shift+Z           (Global)
-	- Debug.ParallelStacks(2022 only)                                               Ctrl+Shift+D, S
-	- Debug.ParallelWatch1(2022 only)                                               Ctrl+Shift+D, 1
-	- Debug.ParallelWatch2(2022 only)                                               Ctrl+Shift+D, 2
-	- Debug.ParallelWatch3(2022 only)                                               Ctrl+Shift+D, 3
-	- Debug.ParallelWatch4(2022 only)                                               Ctrl+Shift+D, 4
-	- Debug.Tasks(2022 only)                                                        Ctrl+Shift+D, K
-	- Debug.Tasks(2022 only)                                                        Ctrl+Shift+D, K
-	- OtherContextMenus.FSIConsoleContext.StopDebugging(2022 only)                  Ctrl+Shift+D
-	- Edit.RemoveLastCaret(2022 only)                                               Shift+Alt+,
-	+ Edit.RemoveLastCaret                                                          Ctrl+Shift+D           (Global)
 	- Edit.CompleteWord                                                             Ctrl+Space
 	- Edit.CompleteWord                                                             Ctrl+Space
 	- Edit.CompleteWord                                                             Ctrl+Tab
@@ -240,6 +269,40 @@
 	- Window.PreviousTab(2022 only)                                                 Ctrl+PgUp
 	- Window.PreviousTab(2019 only)                                                 Ctrl+Alt+PgUp
 	+ Window.PreviousTab                                                            Ctrl+Alt+Z             (Global)
+	- Edit.GoToBrace                                                                Ctrl+]
+	- Edit.Indent                                                                   Ctrl+]
+	+ Edit.IncreaseLineIndent                                                       Ctrl+]                 (Text Editor)
+	- Edit.Outdent                                                                  Ctrl+[
+	+ Edit.DecreaseLineIndent                                                       Ctrl+[                 (Text Editor)
+	- Edit.GoToFindCombo(2019 only)                                                 Ctrl+D
+	- SQL.TSqlEditorResultsAsFile(2019 only)                                        Ctrl+D, F
+	- SQL.TSqlEditorResultsAsFile(2019 only)                                        Ctrl+D, F
+	- SQL.TSqlEditorResultsAsGrid(2019 only)                                        Ctrl+D, G
+	- SQL.TSqlEditorResultsAsGrid(2019 only)                                        Ctrl+D, G
+	- SQL.TSqlEditorResultsAsText(2019 only)                                        Ctrl+D, T
+	- SQL.TSqlEditorResultsAsText(2019 only)                                        Ctrl+D, T
+	- SQL.TSqlEditorShowEstimatedPlan(2019 only)                                    Ctrl+D, E
+	- SQL.TSqlEditorShowEstimatedPlan(2019 only)                                    Ctrl+D, E
+	- SQL.TSqlEditorToggleExecutionPlan(2019 only)                                  Ctrl+D, A
+	- SQL.TSqlEditorToggleExecutionPlan(2019 only)                                  Ctrl+D, A
+	- SQL.TSqlEditorToggleResultsPane(2019 only)                                    Ctrl+D, R
+	- SQL.TSqlEditorToggleResultsPane(2019 only)                                    Ctrl+D, R
+	- Format.TabOrder                                                               Ctrl+D
+	- Edit.InsertNextMatchingCaret(2022 only)                                       Ctrl+Alt+.
+	+ Edit.InsertNextMatchingCaret(2022 only)                                       Ctrl+D                 (Text Editor)
+	- Debug.ParallelStacks(2022 only)                                               Ctrl+Shift+D, S
+	- Debug.ParallelWatch1(2022 only)                                               Ctrl+Shift+D, 1
+	- Debug.ParallelWatch2(2022 only)                                               Ctrl+Shift+D, 2
+	- Debug.ParallelWatch3(2022 only)                                               Ctrl+Shift+D, 3
+	- Debug.ParallelWatch4(2022 only)                                               Ctrl+Shift+D, 4
+	- Debug.Tasks(2022 only)                                                        Ctrl+Shift+D, K
+	- Debug.Tasks(2022 only)                                                        Ctrl+Shift+D, K
+	- OtherContextMenus.FSIConsoleContext.StopDebugging                             Ctrl+Shift+D
+	- Edit.RemoveLastCaret(2022 only)                                               Shift+Alt+,
+	- Edit.InsertCaretsAtallMatching                                                Ctrl+Ins
+	- Edit.InsertCaretsAtallMatching                                                Ctrl+F2
+	- Edit.InsertCaretsAtallMatching                                                Shift+Alt+;
+	+ Edit.InsertCaretsAtallMatching                                                Ctrl+Shift+D           (Text Editor)
 	
 	//These are all in preparation for Ctrl+E re-opening the previously closed tab(s)
 	- Debug.Autos.Search                                                              Ctrl+E
@@ -415,3 +478,8 @@
 	- XsdDesigner.ShowContentModelView                                                Ctrl+2
 	- XsdDesigner.ShowGraphView                                                       Ctrl+3
 	- XsdDesigner.ShowStartView                                                       Ctrl+1
+
+# Completed TODO List Items
+	{X} Add AlignCarets_Command
+	{X} Add JumpToNextEmptyLine_Command and JumpToPrevEmptyLine_Command
+	[X] Organize keybindings that I've developed at work

@@ -20,21 +20,22 @@ namespace TaylorsTech
 {
 	internal class CommandFilter : IOleCommandTarget
 	{
-		protected System.IServiceProvider _serviceProvider;
+		public System.IServiceProvider ServiceProvider;
+		public IWpfTextView View;
+		public IVsTextView ViewAdapter;
+		public DTE2 Dte;
+		public IEditorOperations EditorOps;
+		
 		protected IOleCommandTarget _nextCommandTarget;
-		protected IWpfTextView _view;
-		protected IVsTextView _viewAdapter;
-		protected DTE2 _dte;
-		protected IEditorOperations _editorOperations;
 
 		public CommandFilter(System.IServiceProvider serviceProvider, IVsTextView textViewAdapter, IWpfTextView view, DTE2 dte, IEditorOperationsFactoryService editorOperationsFactory)
 		{
 			textViewAdapter.AddCommandFilter(this, out _nextCommandTarget);
-			_serviceProvider = serviceProvider;
-			_viewAdapter = textViewAdapter;
-			_view = view;
-			_dte = dte;
-			_editorOperations = editorOperationsFactory.GetEditorOperations(view);
+			ServiceProvider = serviceProvider;
+			ViewAdapter = textViewAdapter;
+			View = view;
+			Dte = dte;
+			EditorOps = editorOperationsFactory.GetEditorOperations(view);
 		}
 
 		int IOleCommandTarget.QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
@@ -51,12 +52,15 @@ namespace TaylorsTech
 			{
 				switch (nCmdID)
 				{
-					case TaylorsTechPackage.TestTextviewCommandId: Commands.Test_Command(_view, _editorOperations); break;
-					case TaylorsTechPackage.InsertTodoCommandId: Commands.InsertTodo_Command(_view, _editorOperations); break;
-					case TaylorsTechPackage.OpenSublimeCommandId: Commands.OpenSublime_Command(_viewAdapter, _view, _editorOperations); break;
-					case TaylorsTechPackage.GenerateNumbers0CommandId: Commands.GenerateNumbers0_Command(_view, _editorOperations); break;
-					case TaylorsTechPackage.GenerateNumbers1CommandId: Commands.GenerateNumbers1_Command(_view, _editorOperations); break;
-					case TaylorsTechPackage.GenerateNumbersDialogCommandId: Commands.GenerateNumbersDialog_Command(_serviceProvider, _view, _editorOperations); break;
+					case TaylorsTechPackage.TestTextviewCommandId: Commands.Test_Command(this); break;
+					case TaylorsTechPackage.InsertTodoCommandId: Commands.InsertTodo_Command(this); break;
+					case TaylorsTechPackage.OpenSublimeCommandId: Commands.OpenSublime_Command(this); break;
+					case TaylorsTechPackage.GenerateNumbers0CommandId: Commands.GenerateNumbers0_Command(this); break;
+					case TaylorsTechPackage.GenerateNumbers1CommandId: Commands.GenerateNumbers1_Command(this); break;
+					case TaylorsTechPackage.GenerateNumbersDialogCommandId: Commands.GenerateNumbersDialog_Command(this); break;
+					case TaylorsTechPackage.AlignCursorsCommandId: Commands.AlignCursors_Command(this); break;
+					case TaylorsTechPackage.GotoPrevEmptyLineCommandId: Commands.GotoPrevEmptyLine_Command(this); break;
+					case TaylorsTechPackage.GotoNextEmptyLineCommandId: Commands.GotoNextEmptyLine_Command(this); break;
 					default:
 					{
 						Console.WriteLine("Unknown command ID in our package group!");
