@@ -52,8 +52,8 @@ namespace TaylorsTech
 		public static void OpenSublime_Command(IVsTextView viewAdapter, IWpfTextView view, IEditorOperations editorOps)
         {
 			ThreadHelper.ThrowIfNotOnUIThread();
-			//DocumentView document = view.ToDocumentView();
-			int lineNumber = view.Caret.Position.BufferPosition.GetContainingLineNumber(); //this is 0 indexed
+			//.GetContainingLineNumber() is only availabe in 2022+
+			int lineNumber = view.Caret.Position.BufferPosition.GetContainingLine().LineNumber; //this is 0 indexed
 			viewAdapter.GetBuffer(out IVsTextLines textLines);
 			(textLines as IPersistFileFormat).GetCurFile(out string filePath, out uint formatIndex);
 			System.Diagnostics.Process.Start("subl.exe", $"\"{filePath}\":{lineNumber+1}");
