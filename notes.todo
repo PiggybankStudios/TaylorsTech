@@ -1,0 +1,38 @@
+
+# TODO List
+	[ ] Figure out how to implement GenerateNumbersDialog_Command
+	[ ] Add AlignCarets_Command
+	[ ] Move our commands to our own Extensions sub-menu
+	[ ] Organize keybindings that I've developed at work
+	[ ] 
+
+# Extensions
+	[ ] Subword Navigation - "https://github.com/ow--/vs-subword-navigation"
+	[ ] VSColorOutput - "https://mike-ward.net/vscoloroutput/"
+	[ ] 
+
+# Links
+	[ ] Visual Studio Extension Marketplace - "https://marketplace.visualstudio.com/" ("https://marketplace.visualstudio.com/manage/publishers/piggybankstudios")
+	[ ] Walkthrough Publish a Visual Studio extension - "https://docs.microsoft.com/en-us/visualstudio/extensibility/walkthrough-publishing-a-visual-studio-extension?view=vs-2022"
+	[ ] How to use the activity log - "https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-use-the-activity-log?view=vs-2022"
+	[ ] 
+
+# Folder Paths:
+	[ ] To delete the Experimental (Exp) branch settings for VS when testing: (17.0_2886b3c9Exp)
+		- C:\Users\robbitay\AppData\Local\Microsoft\VisualStudio
+		- C:\Users\robbitay\AppData\Roaming\Microsoft\VisualStudio
+	[ ] Where I found vsshlids.h (VSSDK)
+		- C:\Program Files\Microsoft Visual Studio\2022\Community\VSSDK\VisualStudioIntegration\Common\Inc
+	[ ] devenv.exe Locations
+		- C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\devenv.exe
+		- C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe
+		- C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\devenv.exe
+	[ ] 
+
+# NuGet Packages
+	[ ] NuGet - Microsoft.VisualStudio.SDK (17.0.31902.203 for 2022, 16.0.205 for 2019)
+	[ ] NuGet - Microsoft.VSSDK.BuildTools (17.1.4057 for 2022, 16.6.2057 for 2019)
+	[ ] Reference - System.ComponentModel.Composition v4.0.0.0 (Runtime v4.0.30319)
+
+# Key-Bindings
+	+ 

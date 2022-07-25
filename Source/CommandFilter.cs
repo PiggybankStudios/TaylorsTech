@@ -20,15 +20,17 @@ namespace TaylorsTech
 {
 	internal class CommandFilter : IOleCommandTarget
 	{
+		protected System.IServiceProvider _serviceProvider;
 		protected IOleCommandTarget _nextCommandTarget;
 		protected IWpfTextView _view;
 		protected IVsTextView _viewAdapter;
 		protected DTE2 _dte;
 		protected IEditorOperations _editorOperations;
 
-		public CommandFilter(IVsTextView textViewAdapter, IWpfTextView view, DTE2 dte, IEditorOperationsFactoryService editorOperationsFactory)
+		public CommandFilter(System.IServiceProvider serviceProvider, IVsTextView textViewAdapter, IWpfTextView view, DTE2 dte, IEditorOperationsFactoryService editorOperationsFactory)
 		{
 			textViewAdapter.AddCommandFilter(this, out _nextCommandTarget);
+			_serviceProvider = serviceProvider;
 			_viewAdapter = textViewAdapter;
 			_view = view;
 			_dte = dte;
@@ -52,6 +54,9 @@ namespace TaylorsTech
 					case TaylorsTechPackage.TestTextviewCommandId: Commands.Test_Command(_view, _editorOperations); break;
 					case TaylorsTechPackage.InsertTodoCommandId: Commands.InsertTodo_Command(_view, _editorOperations); break;
 					case TaylorsTechPackage.OpenSublimeCommandId: Commands.OpenSublime_Command(_viewAdapter, _view, _editorOperations); break;
+					case TaylorsTechPackage.GenerateNumbers0CommandId: Commands.GenerateNumbers0_Command(_view, _editorOperations); break;
+					case TaylorsTechPackage.GenerateNumbers1CommandId: Commands.GenerateNumbers1_Command(_view, _editorOperations); break;
+					case TaylorsTechPackage.GenerateNumbersDialogCommandId: Commands.GenerateNumbersDialog_Command(_serviceProvider, _view, _editorOperations); break;
 					default:
 					{
 						Console.WriteLine("Unknown command ID in our package group!");

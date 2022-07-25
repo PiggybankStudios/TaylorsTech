@@ -73,7 +73,7 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4057" />
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="TaylorsTechPackage.vsct">
+    <VSCTCompile Include="..\Source\TaylorsTechPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
   </ItemGroup>

@@ -2,7 +2,13 @@
 	"folders":
 	[
 		{
-			"path": "."
+			"path": ".",
+			"folder_exclude_patterns": [
+				"2022/obj",
+				"2022/bin",
+				"*.vs",
+				"Release",
+			],
 		}
 	]
 }

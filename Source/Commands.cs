@@ -53,9 +53,45 @@ namespace TaylorsTech
         {
 			ThreadHelper.ThrowIfNotOnUIThread();
 			//DocumentView document = view.ToDocumentView();
+			int lineNumber = view.Caret.Position.BufferPosition.GetContainingLineNumber(); //this is 0 indexed
 			viewAdapter.GetBuffer(out IVsTextLines textLines);
 			(textLines as IPersistFileFormat).GetCurFile(out string filePath, out uint formatIndex);
-			System.Diagnostics.Process.Start("subl.exe", $"\"{filePath}\"");
+			System.Diagnostics.Process.Start("subl.exe", $"\"{filePath}\":{lineNumber+1}");
+		}
+
+		private static void GenerateNumbers(IWpfTextView view, IEditorOperations editorOps, int startingIndex, int step)
+        {
+			using (ITextEdit edit = view.TextBuffer.CreateEdit())
+			{
+				List<ITrackingPoint> endingSelections = new List<ITrackingPoint>();
+
+				int selectionIndex = 0;
+				foreach (VirtualSnapshotSpan vspan in view.Selection.VirtualSelectedSpans)
+				{
+					endingSelections.Add(view.TextSnapshot.CreateTrackingPoint(vspan.Start.Position, PointTrackingMode.Negative));
+					string indentation = editorOps.GetWhitespaceForVirtualSpace(vspan.Start);
+					edit.Replace(vspan.SnapshotSpan, indentation + $"{startingIndex + selectionIndex*step}");
+					selectionIndex++;
+				}
+
+				view.Caret.MoveTo(endingSelections[0].GetPoint(view.TextSnapshot));
+
+				edit.Apply();
+			}
+		}
+
+		public static void GenerateNumbers0_Command(IWpfTextView view, IEditorOperations editorOps)
+		{
+			GenerateNumbers(view, editorOps, 0, 1);
+		}
+		public static void GenerateNumbers1_Command(IWpfTextView view, IEditorOperations editorOps)
+		{
+			GenerateNumbers(view, editorOps, 1, 1);
+		}
+		public static void GenerateNumbersDialog_Command(IServiceProvider serviceProvider, IWpfTextView view, IEditorOperations editorOps)
+		{
+			int result = VsShellUtilities.ShowMessageBox(serviceProvider, "This command is currently unimplemented", "Unimplemented", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+			Console.WriteLine($"ShowMessageBox result: {result}");
 		}
 	}
 }

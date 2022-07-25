@@ -49,6 +49,9 @@ namespace TaylorsTech
         public const uint TestTextviewCommandId = 0x0101;
         public const uint InsertTodoCommandId = 0x0102;
         public const uint OpenSublimeCommandId = 0x0103;
+        public const uint GenerateNumbers0CommandId = 0x0104;
+        public const uint GenerateNumbers1CommandId = 0x0105;
+        public const uint GenerateNumbersDialogCommandId = 0x0106;
 
         #region Package Members
 
